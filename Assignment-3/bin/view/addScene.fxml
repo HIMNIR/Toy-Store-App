@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1000.0" style="-fx-background-color: #343a40;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddSceneController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #444444;">
+        <items>
+          <Button fx:id="mainButton" mnemonicParsing="false" onAction="#mainHandler" prefHeight="25.0" prefWidth="100.0" text="Home ">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="10.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Add">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="removeButton" layoutX="63.0" layoutY="13.0" mnemonicParsing="false" onAction="#removeHandler" prefHeight="25.0" prefWidth="100.0" text="Remove">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+        </items>
+      </ToolBar>
+      <Separator layoutX="238.0" layoutY="40.0" orientation="VERTICAL" prefHeight="736.0" prefWidth="0.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="40.0" />
+      <Label layoutX="18.0" layoutY="47.0" prefHeight="40.0" prefWidth="216.0" text="Enter New Toy Information" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
+      </Label>
+      <VBox layoutX="7.0" layoutY="87.0" prefHeight="647.0" prefWidth="230.0">
+         <children>
+            <HBox prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="97.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Choose Type" textFill="WHITE" underline="true" />
+                  <MenuButton fx:id="dropDown" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Category">
+                    <items>
+                      <MenuItem fx:id="figureDown" mnemonicParsing="false" text="Figures" />
+                      <MenuItem fx:id="animalDown" mnemonicParsing="false" text="Animals" />
+                        <MenuItem fx:id="puzzlesDown" mnemonicParsing="false" text="Puzzles" />
+                        <MenuItem fx:id="boardDown" mnemonicParsing="false" text="Board Games" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter SN" textFill="WHITE" underline="true" />
+                  <TextField fx:id="snInput" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Name" textFill="WHITE" underline="true" />
+                  <TextField fx:id="nameInput" prefHeight="25.0" prefWidth="149.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="210.0" prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Brand" textFill="WHITE" underline="true" />
+                  <TextField fx:id="brandInput" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="310.0" prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Price" textFill="WHITE" underline="true" />
+                  <TextField fx:id="priceInput" prefHeight="25.0" prefWidth="149.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="410.0" prefHeight="75.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Stock" textFill="WHITE" underline="true" />
+                  <TextField fx:id="stockInput" prefHeight="25.0" prefWidth="149.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="310.0" prefHeight="50.0" prefWidth="230.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="70.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Age Limit" textFill="WHITE" underline="true" />
+                  <TextField fx:id="ageInput" prefHeight="25.0" prefWidth="149.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Separator layoutX="595.0" layoutY="40.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="6.0" />
+      <Separator layoutX="595.0" layoutY="428.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="6.0" />
+      <Separator layoutX="279.0" layoutY="380.0" prefHeight="1.0" prefWidth="293.0" />
+      <Separator layoutX="622.0" layoutY="379.0" prefHeight="1.0" prefWidth="293.0" />
+      <Label layoutX="700.0" layoutY="392.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Board_Games" textFill="WHITE" />
+      <Label layoutX="328.0" layoutY="392.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Animals" textFill="WHITE" />
+      <Label layoutX="720.0" layoutY="48.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Puzzles" textFill="WHITE" />
+      <Label layoutX="328.0" layoutY="48.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Figures" textFill="WHITE" />
+      <Label layoutX="260.0" layoutY="184.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Classification" textFill="WHITE" underline="true" />
+      <TextField fx:id="figInput" layoutX="391.0" layoutY="228.0" prefHeight="38.0" prefWidth="204.0" promptText="Enter classification" />
+      <TextField fx:id="animalInput" layoutX="381.0" layoutY="487.0" prefHeight="38.0" prefWidth="204.0" />
+      <TextField fx:id="puzInput" layoutX="782.0" layoutY="228.0" prefHeight="38.0" prefWidth="204.0" />
+      <TextField fx:id="animalInputSize" layoutX="381.0" layoutY="635.0" prefHeight="38.0" prefWidth="204.0" />
+      <Separator layoutX="265.0" layoutY="86.0" prefWidth="200.0" />
+      <Separator layoutX="637.0" layoutY="88.0" prefWidth="200.0" />
+      <Separator layoutX="281.0" layoutY="429.0" prefWidth="200.0" />
+      <Separator layoutX="669.0" layoutY="429.0" prefWidth="200.0" />
+      <Label layoutX="609.0" layoutY="184.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Classification" textFill="WHITE" underline="true" />
+      <Label layoutX="241.0" layoutY="449.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Material" textFill="WHITE" underline="true" />
+      <Label layoutX="241.0" layoutY="562.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Size" textFill="WHITE" underline="true" />
+      <TextField fx:id="minPlayers" layoutX="820.0" layoutY="478.0" prefHeight="38.0" prefWidth="149.0" />
+      <Label layoutX="609.0" layoutY="449.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Min players" textFill="WHITE" underline="true" />
+      <TextField fx:id="maxPlayers" layoutX="820.0" layoutY="562.0" prefHeight="38.0" prefWidth="149.0" />
+      <Label layoutX="609.0" layoutY="525.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Max players" textFill="WHITE" underline="true" />
+      <Label layoutX="609.0" layoutY="616.0" prefHeight="38.0" prefWidth="137.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="Creators" textFill="WHITE" underline="true" />
+      <TextField fx:id="developers" layoutX="767.0" layoutY="654.0" prefHeight="38.0" prefWidth="204.0" />
+      <Button fx:id="addButton" layoutX="59.0" layoutY="734.0" mnemonicParsing="false" onAction="#addHandler" prefHeight="38.0" prefWidth="126.0" text="Add Toy" visible="false" />
+      <TextField fx:id="errorPage" alignment="CENTER" layoutX="-2.0" layoutY="-3.0" prefHeight="781.0" prefWidth="1000.0" scaleZ="1000.0" text="Price cant be negative" visible="false">
+         <font>
+            <Font name="Malgun Gothic" size="36.0" />
+         </font></TextField>
+      <Button fx:id="BackButton" layoutX="365.0" layoutY="573.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="75.0" prefWidth="230.0" scaleZ="1.0E7" text="TAKE ME BACK" visible="false" />
+   </children>
+</AnchorPane>

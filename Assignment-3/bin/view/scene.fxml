@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1000.0" style="-fx-background-color: #343a40;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SceneController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #444444;">
+        <items>
+          <Button fx:id="home" mnemonicParsing="false" onAction="#homePage" prefHeight="25.0" prefWidth="100.0" text="Home">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="add" mnemonicParsing="false" onAction="#addPage" prefHeight="25.0" prefWidth="100.0" text="Add">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="remove" mnemonicParsing="false" onAction="#removePage" prefHeight="25.0" prefWidth="100.0" text="Remove">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+        </items>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ToolBar>
+      <Label fx:id="Header" contentDisplay="CENTER" layoutX="350.0" layoutY="40.0" prefHeight="48.0" prefWidth="363.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 20;" text="         Welcome to our company" textFill="WHITE" />
+      <ListView fx:id="displayList" layoutX="298.0" layoutY="98.0" prefHeight="628.0" prefWidth="666.0" style="-fx-border-radius: 25; -fx-border-radius: 25;" />
+      <Label layoutX="50.0" layoutY="114.0" prefHeight="22.0" prefWidth="186.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive; -fx-font-size: 15;" text="Search Inventory" textFill="WHITE" />
+      <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="145.0" prefHeight="40.0" prefWidth="300.0">
+         <children>
+            <RadioButton fx:id="bySN" mnemonicParsing="false" onAction="#snHandler" text="Buy S_N     " textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="byName" mnemonicParsing="false" onAction="#nameHandler" text="Name     " textFill="WHITE" toggleGroup="$group1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="byType" mnemonicParsing="false" onAction="#typeHandler" text="Type" textFill="WHITE" toggleGroup="$group1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+         </children>
+      </HBox>
+      <VBox layoutX="26.0" layoutY="223.0" prefHeight="357.0" prefWidth="272.0">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="272.0">
+               <children>
+                  <Label fx:id="enterSN" layoutX="10.0" layoutY="-10.0" prefHeight="18.0" prefWidth="78.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Serial" textFill="WHITE" visible="false" />
+                  <TextField fx:id="snInput" promptText="Serial number here" visible="false" />
+               </children></HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="272.0">
+               <children>
+                  <Label fx:id="enterName" prefHeight="18.0" prefWidth="78.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Name" textFill="WHITE" visible="false" />
+                  <TextField fx:id="nameInput" promptText="Name here" visible="false" />
+               </children></HBox>
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="60.0" prefWidth="272.0">
+               <children>
+                  <Label fx:id="enterType" prefHeight="18.0" prefWidth="78.0" style="-fx-font-family: &quot;Comic Sans MS&quot;, &quot;Brush Script MT&quot;, cursive;" text="Enter Type" textFill="WHITE" visible="false" />
+                  <TextField fx:id="typeInput" promptText="Type here" visible="false" />
+               </children></HBox>
+            <HBox layoutX="10.0" layoutY="130.0" prefHeight="60.0" prefWidth="272.0">
+               <children>
+                  <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                    <buttons>
+                      <Button fx:id="Submit" alignment="TOP_LEFT" minWidth="46.0" mnemonicParsing="false" onAction="#subHandler" prefHeight="25.0" text="Submit" visible="false" />
+                        <Button fx:id="reset" alignment="TOP_LEFT" layoutX="135.0" layoutY="28.0" minHeight="-Infinity" minWidth="49.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="25.0" prefWidth="47.0" text="Reset" visible="false" />
+                    </buttons>
+                  </ButtonBar>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="buyButton" layoutX="500.0" layoutY="724.0" mnemonicParsing="false" onAction="#buyHandler" prefHeight="25.0" prefWidth="63.0" text="Buy" visible="false" />
+      <TextField fx:id="complete" alignment="CENTER" prefHeight="774.0" prefWidth="1000.0" scaleZ="100.0" style="-fx-background-color: #FFFFFF;" text="PURCHASE COMPLETE THANK YOU!!!!!!!!!!!!!!!!!!" visible="false">
+         <font>
+            <Font name="MS Gothic" size="39.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="noStock" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="774.0" prefWidth="1000.0" scaleZ="100.0" style="-fx-background-color: #FFFFFF;" text="OUT OF STOCK SORRY !!!!!!!!!!!" visible="false">
+         <font>
+            <Font name="MS Gothic" size="39.0" />
+         </font>
+      </TextField>
+      <Button fx:id="back" layoutX="400.0" layoutY="600.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="82.0" prefWidth="252.0" scaleZ="10001.0" style="-fx-background-color: #000000;" text="TAKE ME BACK" textFill="#fffefe" underline="true" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
