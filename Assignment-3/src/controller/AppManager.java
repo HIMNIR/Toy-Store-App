@@ -28,7 +28,7 @@ import model.Toy;
  */
 public class AppManager extends SceneController{
 
-	static ArrayList<Toy> arrList = new ArrayList<Toy>(); // ArrayList to store all the Toy objects
+	public static ArrayList<Toy> arrList = new ArrayList<Toy>(); // ArrayList to store all the Toy objects
 	private static File f = new File("res/toys.txt"); // File object for the text file that stores the toy data
 
 	/**

@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +22,7 @@ import model.CustomExeptionClass;
 import model.Figures;
 
 public class AddSceneController {
+	  String logFile = "res/actionLog.txt";
 	/**
 	 * Controller for the "Add Scene" view. Handles user input and updates the application model accordingly.
 	 */
@@ -86,12 +91,33 @@ public class AddSceneController {
 
 	@FXML
 	private TextField developers;
+	   FileHandler fh;
+		private static final Logger logger = Logger.getLogger("MyLogger");
+
+
+	    private void Logger() {
+	        try {
+	        
+	            String logFilePath = logFile;
+	           fh = new FileHandler(logFilePath, true);
+	            fh.setLevel(Level.ALL);
+	            logger.addHandler(fh);
+	            fh.setFormatter(new SimpleFormatter());
+	        } catch (IOException e) {
+	            System.err.println("Error creating log file: " + e.getMessage());
+	        } catch (SecurityException e) {
+	            System.err.println("Security Exception: " + e.getMessage());
+	        }
+	    }
 
     /**
      * Navigates to the main scene when the corresponding button is pressed.
      */
 	@FXML
 	void mainHandler() {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Navigated to mainPage");
 		try {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/scene.fxml"));
 			stage = (Stage) mainButton.getScene().getWindow();
@@ -108,6 +134,9 @@ public class AddSceneController {
 	 */
 	@FXML
 	void removeHandler() {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Navigated to removedPage");
 		try {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/removeScene.fxml"));
 			stage = (Stage) removeButton.getScene().getWindow();
@@ -141,6 +170,9 @@ public class AddSceneController {
 
 	@FXML
 	void backHandler() {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("back button pressed");
 		BackButton.setVisible(false);
 		errorPage.setVisible(false);
 	}
@@ -155,6 +187,9 @@ public class AddSceneController {
 	
 	@FXML
 	void addHandler() throws CustomExeptionClass {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("add button pressed");
 		try {
 			if (dropDown.getText().equals("Figures")) {
 				boolean ready = AppManager.inputSN(snInput.getText());
@@ -260,6 +295,9 @@ public class AddSceneController {
 	
 	@FXML
 	void chooseAnimals(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Animals selected");
 		dropDown.setText("Animals");
 		setDisable(true);
 		animalInput.setDisable(false);
@@ -269,6 +307,9 @@ public class AddSceneController {
 
 	@FXML
 	void chooseBoard(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Board selected");
 		dropDown.setText("Board_Games");
 		setDisable(true);
 		developers.setDisable(false);
@@ -279,6 +320,9 @@ public class AddSceneController {
 
 	@FXML
 	void chooseFigure(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Figures selected");
 		dropDown.setText("Figures");
 		setDisable(true);
 		figInput.setDisable(false);
@@ -287,6 +331,9 @@ public class AddSceneController {
 
 	@FXML
 	void choosePuzzles(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("Puzzles selected");
 		dropDown.setText("Puzzles");
 		setDisable(true);
 		puzInput.setDisable(false);

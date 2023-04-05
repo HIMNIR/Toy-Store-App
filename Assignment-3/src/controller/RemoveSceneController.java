@@ -2,8 +2,13 @@
 
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +26,7 @@ import javafx.stage.Stage;
 import model.Toy;
 
 public class RemoveSceneController {
+	   String logFile = "res/actionLog.txt";
 	private Stage stage;
     @FXML
     private Button mainPage;
@@ -53,6 +59,24 @@ public class RemoveSceneController {
 	private ListView<Toy> displayList;
 	
 	ObservableList<Toy> typeList;
+    FileHandler fh;
+	private static final Logger logger = Logger.getLogger("MyLogger");
+
+
+    private void Logger() {
+        try {
+        
+            String logFilePath = logFile;
+           fh = new FileHandler(logFilePath, true);
+            fh.setLevel(Level.ALL);
+            logger.addHandler(fh);
+            fh.setFormatter(new SimpleFormatter());
+        } catch (IOException e) {
+            System.err.println("Error creating log file: " + e.getMessage());
+        } catch (SecurityException e) {
+            System.err.println("Security Exception: " + e.getMessage());
+        }
+    }
 	/**
 
 	This method is called when the "Back" button is clicked. It hides the errorPage and backButton.
@@ -60,6 +84,9 @@ public class RemoveSceneController {
 	*/
     @FXML
     void backHandler(ActionEvent event) {
+    	Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("back Button clicked");
     	errorPage.setVisible(false);
 		backButton.setVisible(false);
     }
@@ -70,6 +97,9 @@ public class RemoveSceneController {
     */
     @FXML
     void mainHandler(ActionEvent event) {
+    	Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("went to main page");
     	try {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/scene.fxml"));
 			stage = (Stage) mainPage.getScene().getWindow();
@@ -87,6 +117,9 @@ public class RemoveSceneController {
     */
     @FXML
     void searchHandler(ActionEvent event) {
+    	Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("search button pressed");
     	String typeText = snInput.getText();
 		ArrayList<Toy> purchaseType = AppManager.remove(typeText);
 		 typeList = FXCollections.observableArrayList(purchaseType);
@@ -101,6 +134,9 @@ public class RemoveSceneController {
     */
     @FXML
     void removeHandler(ActionEvent event) {
+    	Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+        logger.info("remove button pressed");
     	for (Toy toys : AppManager.arrList) {
 			if (toys.equals(displayList.getSelectionModel().getSelectedItem())) {
 				if (toys.getCount() != 0) {
@@ -130,6 +166,9 @@ public class RemoveSceneController {
     */
   @FXML
   void addHandler(ActionEvent event) {
+	  Logger();
+	    logger.addHandler(fh); // add the FileHandler to the logger
+      logger.info("add button pressed");
   	try {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/addScene.fxml"));
 			stage = (Stage) addPage.getScene().getWindow();

@@ -1,7 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +27,7 @@ import javafx.stage.Stage;
 import model.Toy;
 
 public class SceneController {
+    File logFile = new File("res/actionLog.txt");
 	ObservableList<Toy> snList ;
 	ObservableList<Toy> nameList;
 	ObservableList<Toy> typeList;
@@ -83,9 +89,26 @@ public class SceneController {
 
     @FXML
     private Button back;
-    
+ 
 	private Stage stage;
+    FileHandler fh;
+	private static final Logger logger = Logger.getLogger("MyLogger");
 
+
+    private void Logger() {
+        try {
+        
+            String logFilePath = logFile.getAbsolutePath();
+           fh = new FileHandler(logFilePath, true);
+            fh.setLevel(Level.ALL);
+            logger.addHandler(fh);
+            fh.setFormatter(new SimpleFormatter());
+        } catch (IOException e) {
+            System.err.println("Error creating log file: " + e.getMessage());
+        } catch (SecurityException e) {
+            System.err.println("Security Exception: " + e.getMessage());
+        }
+    }
 	/**
 	Loads the "addScene.fxml" view and displays it on the current window.
 	This method is triggered by the "Add" button on the main page.
@@ -97,6 +120,10 @@ public class SceneController {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/addScene.fxml"));
 			stage = (Stage) add.getScene().getWindow();
 			stage.setScene(new Scene(root,1020,774));
+			Logger();
+		    logger.addHandler(fh); // add the FileHandler to the logger
+	        logger.info("Navigated to addPage");
+			 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,6 +148,9 @@ public class SceneController {
 			Parent root = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/removeScene.fxml"));
 			stage = (Stage) remove.getScene().getWindow();
 			stage.setScene(new Scene(root,1020,774));
+			Logger();
+		    logger.addHandler(fh); 
+			logger.log(Level.INFO, "Navigated to the removeScene.fxml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,6 +164,7 @@ public class SceneController {
 	*/
 	@FXML
 	void backHandler(ActionEvent event) {
+		logger.log(Level.INFO, "Back button pressed");
 		noStock.setVisible(false);
 		complete.setVisible(false);
 		back.setVisible(false);
@@ -153,6 +184,9 @@ public class SceneController {
 					AppManager.saveFile();
 					complete.setVisible(true);
 					back.setVisible(true);
+					Logger();
+				    logger.addHandler(fh); 
+					logger.log(Level.INFO, "Buy button pressed");
 				}
 				else {
 					
@@ -174,12 +208,18 @@ public class SceneController {
 	void subHandler(ActionEvent event) {
 		buyButton.setVisible(true);
 		if (byName.isSelected()) {
+			Logger();
+		    logger.addHandler(fh); 
+			logger.log(Level.INFO, "Submit button pressed");
 			String nameText = nameInput.getText();
 			System.out.println(nameText);
 			ArrayList<Toy> purchaseName = AppManager.purchaseName(nameText);
 			 nameList = FXCollections.observableArrayList(purchaseName);
 			displayList.getItems().addAll(nameList);
 		} else if (bySN.isSelected()) {
+			Logger();
+		    logger.addHandler(fh); 
+			logger.log(Level.INFO, "Submit button pressed");
 			String snText = snInput.getText();
 			ArrayList<Toy> purchaseSN = AppManager.purchaseS_N(snText);
 			 snList = FXCollections.observableArrayList(purchaseSN);
@@ -187,6 +227,9 @@ public class SceneController {
 		}
 
 		else if (byType.isSelected()) {
+			Logger();
+		    logger.addHandler(fh); 
+			logger.log(Level.INFO, "Submit button pressed");
 			String typeText = typeInput.getText();
 			ArrayList<Toy> purchaseType = AppManager.purchaseType(typeText);
 			 typeList = FXCollections.observableArrayList(purchaseType);
@@ -255,6 +298,9 @@ public class SceneController {
 	
 	@FXML
 	void snHandler(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); 
+		logger.log(Level.INFO, " SN radio button selected ");
 		if (bySN.isSelected()) {
 			visible();
 			colorCode1();
@@ -269,6 +315,9 @@ public class SceneController {
 	*/
 	@FXML
 	void typeHandler(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); 
+		logger.log(Level.INFO, " Type radio button selected ");
 		if (byType.isSelected()) {
 			visible();
 			colorCode2();
@@ -282,6 +331,9 @@ public class SceneController {
 	*/
 	@FXML
 	void nameHandler(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); 
+		logger.log(Level.INFO, " Name radio button selected ");
 		if (byName.isSelected()) {
 			visible();
 			colorCode3();
@@ -297,6 +349,9 @@ public class SceneController {
 	*/
 	@FXML
 	void resetHandler(ActionEvent event) {
+		Logger();
+	    logger.addHandler(fh); 
+		logger.log(Level.INFO, " Name radio button selected ");
 		if(bySN.isSelected()) {
 		
 			displayList.getItems().clear();
@@ -315,10 +370,7 @@ public class SceneController {
 		bySN.setSelected(false);
 		typeInput.deleteText(0, typeInput.getLength());
 		byType.setSelected(false);
-		colorReset();
-		
-		
-		
+		colorReset();	
 	}
 	
 }

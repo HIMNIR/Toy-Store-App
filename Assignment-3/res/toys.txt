@@ -8,7 +8,7 @@
 6114587612;Morpion solitaire;Game Rush;47.89;5;6;L
 4774316121;Snake cube;Game Sensor;184.21;9;3;C
 9074383778;Blue Max;Gamearo;199.37;11;2;1-3;Rojin Poole
-4084960372;Sudoku;Game Shadow;264.27;5;6;L
+4084960372;Sudoku;Game Shadow;264.27;4;6;L
 6602785768;Chess puzzle;Gameara;19.44;13;5;M
 6019930308;Tsumeshogi;Game Rush;250.13;7;2;M
 7837317368;TEG;Game Reboot;76.34;1;8;1-3;Milla Baxter
@@ -229,3 +229,4 @@
 5461230789;asf;asdf;22.0;12;22;R
 2314567896;asdf;sdaf;22.0;33;1;gas;M
 2134567890;asf;asf;1.0;33;22;ssss;L
+0693095326;Napoleon;Gamescape;14.16;10;3;H
