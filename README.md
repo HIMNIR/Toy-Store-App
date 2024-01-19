@@ -44,3 +44,12 @@ JavaFX: The GUI is built using JavaFX, providing a modern and interactive user i
 JUnit: Unit testing framework for validating the correctness of the code.
 
 Logging Framework: Utilizes a logging framework to capture and manage system logs for debugging and analysis.
+
+
+
+How to Use
+
+Clone the repository to your local machine.
+Open the project in your preferred Java development environment (IDE).
+Run the AppManager class to initiate the application.
+Utilize the intuitive GUI to navigate through adding, removing, and viewing toys in the inventory.
